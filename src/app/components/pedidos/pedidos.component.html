@@ -1,0 +1,29 @@
+<div class="card mb-3 text-center" style="width: 100%;">
+  <div class="card-header">
+    <h2>{{titulo}}</h2>
+  </div>
+  <div class="card-body text-secondary">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped">
+        <thead class="thead-light">
+          <tr>
+            <th class="text-left">Almacenista</th>
+            <th>{{titulo}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let i of info">
+            <td class="text-left">
+              <img class="img-fluid rounded-circle" width="15%" src="https://ferremayoristas.com.mx/almacen/vistas/img/{{i.img}}" > {{i.nombre}}
+            </td>
+            <td style="vertical-align: middle!important">{{i.cantidad}}</td>
+          </tr>
+          <tr class="table-light">
+            <th>Total</th>
+            <th>{{total}}</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

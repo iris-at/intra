@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.centrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fondo{
+    background-image: url('assets/images/fondo.jpg');
+    background-repeat: no-repeat;
+    background-size: 120%;
+    /* filter: grayscale(60%); */
+}
+
+.puntero{
+    cursor: pointer;
+}

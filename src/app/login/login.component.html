@@ -1,0 +1,21 @@
+<div class="vh-100 mh-100 centrar fondo">
+  <div class="jumbotron text-center" style="width: 15%">
+      <h3 class="h1">LOGIN</h3>
+      <form #f="ngForm" (ngSubmit)="ingresar(f)" ngNativeValidate>
+        <div class="form-group">
+          <input [ngModel]="email" name="email" type="email" class="form-control"  placeholder="Ingresa E-mail" autocomplete="on">
+        </div>
+        <div class="form-group">
+          <input ngModel type="password" name="password" class="form-control"  placeholder="Ingresa Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <br *ngIf="iniciar">
+        <span class="spinner-grow spinner-grow-md mt-4" role="status" aria-hidden="true" *ngIf="iniciar"></span>
+        <br *ngIf="error">
+        <span class="badge badge-danger" *ngIf="error">{{mensaje}}</span>
+        <hr class="my-4">
+        <span class="font-weight-bold">Almacén v1.0.0</span>
+      </form>
+  </div>
+</div>
+  

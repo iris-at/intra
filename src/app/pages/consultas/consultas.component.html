@@ -1,0 +1,60 @@
+<div class="row px-5 mt-5" style="margin-left: 0px!important; margin-right: 0px!important;">
+  <div class="col-md-3 col-lg-3 col-sm-12">
+    <label for="folio" class="col-form-label-lg">Ingresa Folio</label>
+    <input #folio type="text" class="form-control" name="folio" id="folio" (keyup.enter)="buscador()" >
+  </div>
+  <div class="col-9"></div>
+  <div class="col-md-4 col-lg-4 col-sm-12 py-5" *ngIf="nombre === ''">
+    <div class="alert alert-danger" role="alert">
+      ¡No hay información!
+    </div>
+  </div>
+  <div class="col-md-4 col-lg-4 col-sm-12 py-5" *ngIf="nombre !== ''">
+    <div class="card">
+      <div class="centrar pt-2">
+        <img class="card-img-top img-fluid rounded-circle w-50" src="https://ferremayoristas.com.mx/almacen/vistas/img/{{img}}" >
+      </div>
+      <div class="card-body centrar">
+        <h5 class="card-title">Datos</h5>
+        <h2 class="display-4"><i class="mdi mdi-account-box"></i>{{nombre}}</h2>
+        <div class="d-flex justify-content-around">
+          <div class="p-2 bd-highlight">
+            <h6>Fecha de registro: {{fecha}}</h6>
+          </div>
+        </div>
+        <div class="d-flex justify-content-around">
+          <div class="p-2 bd-highlight">
+            <h6>Ultimo Pedido: {{ultimopedido}}</h6>
+          </div>
+          <div class="p-2 bd-highlight">
+            <h6>Ultimas Partidas: {{ultimapartidas}}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-around">
+          <div class="p-2 bd-highlight">
+            <h3><span class="badge badge-warning"><i class="mdi mdi-numeric"></i>Folio: {{pedido}}</span></h3>
+          </div>
+          <div class="p-2 bd-highlight">
+            <h3><span class="badge badge-warning"><i class="mdi mdi-alphabetical"></i>Serie: {{serie | uppercase}}</span></h3>
+          </div>
+        </div>
+        <div class="d-flex justify-content-around">
+          <div class="p-2 bd-highlight">
+            <h3><span class="badge badge-warning"><i class="mdi mdi-clock"></i>Hora: {{hora}}</span></h3>
+          </div>
+          <div class="p-2 bd-highlight">
+            <h3><span class="badge badge-warning"><i class="mdi mdi-cube-outline"></i>Área: {{lugar}}</span></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 col-lg-8 col-sm-12 py-5" *ngIf="nombre !== ''">
+    <app-grafica [lineChartLabels]="lineChartLabels" [lineChartOptions]="lineChartOptions" [lineChartData]="lineChartData"></app-grafica>
+  </div>
+</div>
+      
+
+

@@ -1,0 +1,30 @@
+<div class="row px-5 mt-5" style="margin-right: 0px!important; margin-left: 0px!important;">
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <h3>Información de {{herramientasService.horaActualDigito()}} a {{(herramientasService.horaActualDigito() + 1)}}</h3>
+  </div>
+  <div class="col-md-6 col-lg-3 col-sm-12 text-center">
+    <app-pedidos [titulo]="'Pedidos'" [info]="pedidos" [total]="pedidosTotal"></app-pedidos>    
+  </div>
+  <div class="col-md-6 col-lg-3 col-sm-12">
+    <app-pedidos [titulo]="'Partidas'" [info]="partidas" [total]="partidasTotal"></app-pedidos>  
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-12 centrar" *ngIf="nombre !== ''">
+    <h2>Mejor Almacenista</h2>
+    <img class="img-fluid rounded-circle w-50" *ngIf="foto !== ''" src="https://ferremayoristas.com.mx/almacen/vistas/img/{{foto}}" >
+    <h1 class="display-4">{{nombre}}</h1>
+    <div class="d-flex justify-content-around">
+      <div class="p-2 bd-highlight">
+        <h3><span class="badge badge-info">Pedidos: {{pedido}}</span></h3>
+      </div>
+      <div class="p-2 bd-highlight">
+        <h3><span class="badge badge-info">Partidas: {{partida}}</span></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-6 col-sm-12 centrar" *ngIf="nombre !== ''">
+    <h1>SIN INFORMACIÓN</h1>
+  </div>
+  <div class="col-md-12 col-lg-12 col-sm-12">
+    <app-grafica [lineChartLabels]="lineChartLabels" [lineChartOptions]="lineChartOptions" [lineChartData]="lineChartData"></app-grafica>
+  </div>
+</div>
