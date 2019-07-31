@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   ingresar(form: any) {
     this.iniciar = true;
     this.error = false;
-    
+
     if (form.invalid) {
       return;
     }
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.usuario.login(usuario).subscribe((resp: any) => {
       if (resp.ok) {
         if (resp.usuario.rol === 'ALMACEN_ROLE' || resp.usuario.rol === 'ALMACENISTA_ROLE' || resp.usuario.rol === 'ADMIN_ROLE') {
-          console.log(resp);
           this.iniciar = false;
           this.error = false;
           this.router.navigate(['/dashboardAlmacen']);
