@@ -1,3 +1,33 @@
-<div class="centrar vh-100">
-  <h1 class="display-1">EN CONSTRUCCIÓN</h1>
+<div class="row" style="margin-right: 0px!important; margin-left: 0px!important;">
+  <div class="col-md-2 col-lg-2 col-sm-12 py-4">
+    <div class="form-group">
+      <input #input type="text" name="folio" id="folio" class="form-control" placeholder="Ingrese Folio" (keyup.enter)="obtenerPartidas()">
+    </div>
+  </div>
+  <div class="col-md-10 col-lg-10 col-sm-12"></div>
+  <div class="col-md-12 col-lg-12 col-sm-12" *ngIf="partidas.length === 0">
+    <h1>Sin Partidas a imprimir</h1>
+  </div>
+  <div class="col-md-12 col-lg-12 col-sm-12" *ngIf="partidas.length > 0">
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item text-center" *ngFor="let p of partidas">
+        <img [src]="p.imagen" class="img-fluid rounded-top">
+        <h6>{{p.codigo}}</h6>
+        <span class="text-center">
+          Solicitó
+          <br>
+          <span class="display-4 font-weight-bold">{{p.cantsol}}</span>
+        </span>
+        <input type="number" id="newcant" name="newcant" class="form-control text-center font-weight-bold mb-2" [value]="p.cantsol">
+        <span class="text-center">
+            Existencias
+          <br>
+          <span class="display-4 font-weight-bold">{{p.existencia}}</span>
+        </span>
+        <input type="number" id="newexist" name="newexist" class="form-control text-center font-weight-bold" [value]="p.existencia">
+        <hr class="mt-2">
+        <button type="button" class="btn btn-primary">Imprimir</button>
+      </li>
+    </ul>
+  </div>
 </div>
