@@ -14,7 +14,7 @@ export class TicketComponent implements OnInit {
 
   partidas: any[] = [];
   folio: string;
-  useExistingCss: boolean = true;
+  useExistingCss = true;
   elementType = 'svg';
   format = 'CODE39';
   lineColor = '#000000';
