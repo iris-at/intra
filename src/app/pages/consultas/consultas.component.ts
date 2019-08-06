@@ -49,7 +49,7 @@ export class ConsultasComponent implements OnInit {
   }
 
   buscador() {
-    this.limpiar();
+    this.limpiando();
     const folio = this.input.nativeElement.value;
     const buscar = folio.split('-');
 
@@ -170,7 +170,7 @@ export class ConsultasComponent implements OnInit {
     });
   }
 
-  limpiar() {
+  limpiando() {
     this.folios = [];
     this.lineChartData = [];
     this.totalPedidos = [];
@@ -184,7 +184,7 @@ export class ConsultasComponent implements OnInit {
   }
   
   pedidosUsuario(){
-    this.limpiar();
+    this.limpiando();
     const usuario = this.user.nativeElement.value;
     this.pedidosService.obtenerInfoId(usuario).subscribe((info: any) => {
       if(info.length > 0) {
