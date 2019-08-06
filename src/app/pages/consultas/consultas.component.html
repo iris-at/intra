@@ -1,60 +1,151 @@
-<div class="row px-5 mt-5" style="margin-left: 0px!important; margin-right: 0px!important;">
-  <div class="col-md-3 col-lg-3 col-sm-12">
-    <label for="folio" class="col-form-label-lg">Ingresa Folio</label>
-    <input #folio type="text" class="form-control" name="folio" id="folio" (keyup.enter)="buscador()" >
+<div class="mt-4">
+  <a class="btn btn-primary mx-4" data-toggle="collapse" href="#folio" role="button" aria-expanded="false" (click)="limpiar()" aria-controls="folio">
+    Buscar por folio
+  </a>
+  <a class="btn btn-primary" data-toggle="collapse" href="#usuario" role="button" aria-expanded="false" (click)="limpiar()" aria-controls="usuario">
+      Buscar por Usuario
+    </a>
   </div>
-  <div class="col-9"></div>
-  <div class="col-md-4 col-lg-4 col-sm-12 py-5" *ngIf="nombre === ''">
-    <div class="alert alert-danger" role="alert">
-      ¡No hay información!
+<div class="collapse" id="usuario">
+  <div class="row px-5 mt-5" style="margin-left: 0px!important; margin-right: 0px!important;">
+    <div class="col-md-3 col-lg-3 col-sm-12">
+      <label for="usuarios" class="col-form-label-lg">Ingresa ID de usuario</label>
+      <select class="form-control" #user name="usuario" (change)="pedidosUsuario()">
+          <option value="0">Selecciona una opcion</option>
+          <option *ngFor="let a of lista" value="{{a.id}}">{{a.nombres}}</option>
+      </select>
     </div>
+        <div class="col-9"></div>
+        <div class="col-md-4 col-lg-4 col-sm-12 py-5" style="max-height: 670px!important;">
+          <div class="alert alert-danger" role="alert" *ngIf="nombre === ''">
+            ¡No hay información!
+          </div>
+          <div class="card" *ngIf="nombre !== ''">
+              <div class="centrar">
+                <img class="card-img-top img-fluid rounded-circle w-50" src="https://ferremayoristas.com.mx/almacen/vistas/img/{{img}}" >
+              </div>
+              <div class="card-body centrar">
+                  <h5 class="card-title">{{seccion}}</h5>
+                  <h2 class="display-5"><i class="mdi mdi-account-box"></i>{{nombre}}</h2>
+                  <h3 class="card-title">ID: {{id}}</h3>
+                  <div class="d-flex justify-content-around">
+                    <div class="p-2 bd-highlight">
+                      <button type="button" class="btn btn-primary">
+                          Total pedidos: <span class="badge badge-light">{{totalPedidos.length}}</span>
+                          <span class="sr-only"></span>
+                        </button>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-around">
+                      <div class="p-2 bd-highlight">
+                        <h6>Fecha de registro: {{fecha}}</h6>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                      <div class="p-2 bd-highlight">
+                        <h6>Ultimo Pedido: {{ultimopedido}}</h6>
+                      </div>
+                      <div class="p-2 bd-highlight">
+                        <h6>Ultimas Partidas: {{ultimapartidas}}</h6>
+                      </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-12 py-5" style="max-height: 720px!important;" *ngIf="totalPedidos.length > 0" >
+          <div class="table-responsive" style="overflow-y: auto; height: 650px!important;">
+            <table class="table table-hover">
+              <thead class="bg-danger text-white">
+                <tr>
+                  <th>#</th>
+                  <th>Serie</th>
+                  <th>Folio</th>
+                  <th>partidas</th>
+                  <th>hora</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let i of totalPedidos, let in = index">
+                  <td>{{(in + 1)}}</td>
+                  <td>{{i.serie | uppercase}}</td>
+                  <td>{{i.pedido}}</td>
+                  <td>{{i.partidas}}</td>
+                  <td>{{i.hora}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-12">
+            <app-grafica [lineChartLabels]="lineChartLabels" [lineChartOptions]="lineChartOptions" [lineChartData]="lineChartData"></app-grafica>
+          </div>
   </div>
-  <div class="col-md-4 col-lg-4 col-sm-12 py-5" *ngIf="nombre !== ''">
-    <div class="card">
-      <div class="centrar pt-2">
-        <img class="card-img-top img-fluid rounded-circle w-50" src="https://ferremayoristas.com.mx/almacen/vistas/img/{{img}}" >
+
+</div>
+
+<div class="collapse" id="folio">
+    <div class="row px-5 mt-5" style="margin-left: 0px!important; margin-right: 0px!important;">
+      <div class="col-md-3 col-lg-3 col-sm-12">
+        <label for="folio" class="col-form-label-lg">Ingresa Folio</label>
+        <input #folio type="text" class="form-control" name="folio" id="folio" (keyup.enter)="buscador()" >
       </div>
-      <div class="card-body centrar">
-        <h5 class="card-title">Datos</h5>
-        <h2 class="display-4"><i class="mdi mdi-account-box"></i>{{nombre}}</h2>
-        <div class="d-flex justify-content-around">
-          <div class="p-2 bd-highlight">
-            <h6>Fecha de registro: {{fecha}}</h6>
-          </div>
-        </div>
-        <div class="d-flex justify-content-around">
-          <div class="p-2 bd-highlight">
-            <h6>Ultimo Pedido: {{ultimopedido}}</h6>
-          </div>
-          <div class="p-2 bd-highlight">
-            <h6>Ultimas Partidas: {{ultimapartidas}}</h6>
-          </div>
+      <div class="col-9"></div>
+      <div class="col-md-4 col-lg-4 col-sm-12 py-5" *ngIf="folios.length === 0">
+        <div class="alert alert-danger" role="alert">
+          ¡No hay información!
         </div>
       </div>
-      <div class="card-footer">
-        <div class="d-flex justify-content-around">
-          <div class="p-2 bd-highlight">
-            <h3><span class="badge badge-warning"><i class="mdi mdi-numeric"></i>Folio: {{pedido}}</span></h3>
+      <div class="col-md-4 col-lg-4 col-sm-12 py-5" *ngIf="folios.length > 0">
+        <div class="card my-2" *ngFor="let f of folios">
+          <div class="centrar pt-2">
+            <img class="card-img-top img-fluid rounded-circle w-50" src="https://ferremayoristas.com.mx/almacen/vistas/img/{{f.img}}" >
           </div>
-          <div class="p-2 bd-highlight">
-            <h3><span class="badge badge-warning"><i class="mdi mdi-alphabetical"></i>Serie: {{serie | uppercase}}</span></h3>
+          <div class="card-body centrar">
+            <h5 class="card-title">Datos</h5>
+            <h2 class="display-4"><i class="mdi mdi-account-box"></i>{{f.nombre}}</h2>
+            <div class="d-flex justify-content-around">
+              <div class="p-2 bd-highlight">
+                <h6>Fecha de registro: {{f.fecha}}</h6>
+              </div>
+            </div>
+            <div class="d-flex justify-content-around">
+              <div class="p-2 bd-highlight">
+                <h6>Ultimo Pedido: {{f.ultimopedido}}</h6>
+              </div>
+              <div class="p-2 bd-highlight">
+                <h6>Ultimas Partidas: {{f.ultimapartidas}}</h6>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="d-flex justify-content-around">
-          <div class="p-2 bd-highlight">
-            <h3><span class="badge badge-warning"><i class="mdi mdi-clock"></i>Hora: {{hora}}</span></h3>
-          </div>
-          <div class="p-2 bd-highlight">
-            <h3><span class="badge badge-warning"><i class="mdi mdi-cube-outline"></i>Área: {{lugar}}</span></h3>
+          <div class="card-footer">
+            <div class="d-flex justify-content-around">
+              <div class="p-2 bd-highlight">
+                <h3><span class="badge badge-warning"><i class="mdi mdi-numeric"></i>Folio: {{f.pedido}}</span></h3>
+              </div>
+              <div class="p-2 bd-highlight">
+                <h3><span class="badge badge-warning"><i class="mdi mdi-alphabetical"></i>Serie: {{f.serie | uppercase}}</span></h3>
+              </div>
+            </div>
+            <div class="d-flex justify-content-around">
+              <div class="p-2 bd-highlight">
+                <h3><span class="badge badge-warning"><i class="mdi mdi-clock"></i>Hora: {{f.hora}}</span></h3>
+              </div>
+              <div class="p-2 bd-highlight">
+                <h3><span class="badge badge-warning"><i class="mdi mdi-cube-outline"></i>Área: {{f.lugar | uppercase}}</span></h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-8 col-lg-8 col-sm-12 py-5" *ngIf="nombre !== ''">
-    <app-grafica [lineChartLabels]="lineChartLabels" [lineChartOptions]="lineChartOptions" [lineChartData]="lineChartData"></app-grafica>
+      <div class="col-md-8 col-lg-8 col-sm-12 py-5" *ngIf="folios.length > 0">
+        <app-grafica [lineChartLabels]="lineChartLabels" [lineChartOptions]="lineChartOptions" [lineChartData]="lineChartData"></app-grafica>
+      </div>
   </div>
 </div>
+
+
+
       
 
 
