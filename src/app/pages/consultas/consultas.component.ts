@@ -30,7 +30,7 @@ export class ConsultasComponent implements OnInit {
   ultimopedido: string;
   seccion: string;
   id_user: number;
- 
+
 
   lineChartData: Array<any> = [ ];
 
@@ -44,7 +44,7 @@ export class ConsultasComponent implements OnInit {
   ) {
     this.almacenistas();
   }
-  
+
   ngOnInit() {
   }
 
@@ -155,11 +155,11 @@ export class ConsultasComponent implements OnInit {
     });
   }
 
-  almacenistas(){
+  almacenistas() {
     this.pedidosService.totalAlmacenistas().subscribe((dat: any) => {
       this.lista = [];
-      if(dat.length > 0){
-        for(let i=0; i<dat.length; i++){
+      if (dat.length > 0){
+        for (let i=0; i<dat.length; i++) {
           const res = {
             id: dat[i].id,
             nombres: dat[i].nombre,
@@ -182,7 +182,7 @@ export class ConsultasComponent implements OnInit {
     this.ultimapartidas = 0;
     this.ultimopedido = '';
   }
-  
+
   pedidosUsuario(){
     this.limpiando();
     const usuario = this.user.nativeElement.value;
