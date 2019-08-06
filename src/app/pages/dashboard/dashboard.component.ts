@@ -62,11 +62,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   obtenerPartidas(){
     this.pedidosService.partidasHora(this.herramientasService.horaActualDigito()).subscribe((resp: any) => {
-      this.partidas = resp;
-      this.nombre = resp[0].nombre;
-      this.foto = resp[0].img;
-      this.pedido = resp[0].pedidos;
-      this.partida = resp[0].cantidad;
+      if(resp.length > 0) {
+        this.partidas = resp;
+        this.nombre = resp[0].nombre;
+        this.foto = resp[0].img;
+        this.pedido = resp[0].pedidos;
+        this.partida = resp[0].cantidad;
+      }
     });
   }
 
