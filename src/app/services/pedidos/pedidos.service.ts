@@ -61,4 +61,15 @@ export class PedidosService {
     this.url = URL_EXTERNO + ':' + PUERTO_SERVER + '/api/almacen.php?opcion=12&folio=' + folio + '&serie=' + serie;
     return this.http.get(this.url);
   }
+
+  obtenerInfoId(id: any) {
+    this.url = URL_EXTERNO + ':' + PUERTO_SERVER + '/api/almacen.php?opcion=13&id=' + id;
+    return this.http.get(this.url);
+  }
+
+  obtenerPedidosId(id: any) {
+    this.url = URL_EXTERNO + ':' + PUERTO_SERVER + '/api/almacen.php?opcion=14&id=' + id;
+    return this.http.get(this.url);
+  }
+
 }
