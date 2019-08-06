@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
-//Guardias
+// Guardias
 import { LoginGuard } from './guards/login/login.guard';
 
-//Paginas
+// Paginas
 import { LoginComponent } from './login/login.component';
 import { PagesComponent } from './pages/pages.component';
 
@@ -15,6 +15,7 @@ const appRoutes: Routes = [
         canActivate: [ LoginGuard ],
         loadChildren: './pages/pages.module#PagesModule'
     },
+    { path: '**', component: LoginComponent }
     // { path: '**', component: NopagefoundComponent }
 ];
 

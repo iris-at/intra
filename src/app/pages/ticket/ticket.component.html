@@ -9,10 +9,13 @@
     <h1>Sin Partidas a imprimir</h1>
   </div>
   <div class="col-md-12 col-lg-12 col-sm-12" *ngIf="partidas.length > 0">
-    <ul class="list-group list-group-horizontal">
-      <li class="list-group-item text-center" *ngFor="let p of partidas">
-        <img [src]="p.imagen" class="img-fluid rounded-top">
+    <h3>Pedido: {{folio}}</h3>
+    <div class="row">
+      <div class="col-3 text-center mx-5" *ngFor="let p of partidas">
+        <h2>{{p.serie}}-{{p.folio}}</h2>
+        <h6>{{p.articulo}}</h6>
         <h6>{{p.codigo}}</h6>
+        <ngx-barcode [bc-value]="textCodBar(p)" [bc-format]="'CODE39'" [bc-display-value]="true" [bc-width]="'2'"></ngx-barcode>
         <span class="text-center">
           Solicitó
           <br>
@@ -27,7 +30,7 @@
         <input type="number" id="newexist" name="newexist" class="form-control text-center font-weight-bold" [value]="p.existencia">
         <hr class="mt-2">
         <button type="button" class="btn btn-primary">Imprimir</button>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </div>

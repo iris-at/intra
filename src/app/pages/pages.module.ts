@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+// Import ngx-barcode module
+import { NgxBarcodeModule } from 'ngx-barcode';
+
 // Graficas ng2-charts
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
-//Rutas
+// Rutas
 import { PAGES_ROUTES } from './pages.routes';
 
 // Páginas
@@ -12,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ConsultasComponent } from './consultas/consultas.component';
 import { TicketComponent } from './ticket/ticket.component';
 
-//Componentes
+// Componentes
 import { PedidosComponent } from '../components/pedidos/pedidos.component';
 import { GraficaComponent } from '../components/grafica/grafica.component';
 
@@ -22,7 +25,7 @@ import { GraficaComponent } from '../components/grafica/grafica.component';
         DashboardComponent,
         ConsultasComponent,
         TicketComponent,
-        //Components
+        // Components
         PedidosComponent,
         GraficaComponent
     ],
@@ -31,7 +34,8 @@ import { GraficaComponent } from '../components/grafica/grafica.component';
     imports: [
         CommonModule,
         PAGES_ROUTES,
-        ChartsModule
+        ChartsModule,
+        NgxBarcodeModule,
     ]
 })
 
