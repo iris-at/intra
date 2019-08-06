@@ -11,25 +11,49 @@
   <div class="col-md-12 col-lg-12 col-sm-12" *ngIf="partidas.length > 0">
     <h3>Pedido: {{folio}}</h3>
     <div class="row">
-      <div class="col-3 text-center mx-5" *ngFor="let p of partidas">
-        <h2>{{p.serie}}-{{p.folio}}</h2>
-        <h6>{{p.articulo}}</h6>
-        <h6>{{p.codigo}}</h6>
-        <ngx-barcode [bc-value]="textCodBar(p)" [bc-format]="'CODE39'" [bc-display-value]="true" [bc-width]="'2'"></ngx-barcode>
-        <span class="text-center">
-          Solicitó
-          <br>
-          <span class="display-4 font-weight-bold">{{p.cantsol}}</span>
-        </span>
-        <input type="number" id="newcant" name="newcant" class="form-control text-center font-weight-bold mb-2" [value]="p.cantsol">
-        <span class="text-center">
-            Existencias
-          <br>
-          <span class="display-4 font-weight-bold">{{p.existencia}}</span>
-        </span>
-        <input type="number" id="newexist" name="newexist" class="form-control text-center font-weight-bold" [value]="p.existencia">
-        <hr class="mt-2">
-        <button type="button" class="btn btn-primary">Imprimir</button>
+      <div class="col-md-4 text-center" *ngFor="let p of partidas">
+        <div class="card">
+          <div class="card-body">
+            <div [id]="'print-section'+p.codigo" class="text-center" style="text-align: center!important">
+              <h2 style="text-align: center!important">{{p.serie}}-{{p.folio}}</h2>
+              <h6 style="text-align: center!important">{{p.codigo}} {{p.articulo}}</h6>
+              <ngx-barcode style="text-align: center!important"
+                [bc-value]="textCodBar(p)"
+                [bc-element-type]="elementType"
+                [bc-format]="format"
+                [bc-line-color]="lineColor"
+                [bc-width]="width"
+                [bc-height]="height"
+                [bc-display-value]="displayValue"
+                [bc-font-options]="fontOptions"
+                [bc-font]="font"
+                [bc-text-align]="textAlign"
+                [bc-text-position]="textPosition"
+                [bc-text-margin]="textMargin"
+                [bc-font-size]="fontSize"
+                [bc-background]="background"
+                [bc-margin]="margin"
+                [bc-margin-top]="marginTop"
+                [bc-margin-bottom]="marginBottom"
+                [bc-margin-left]="marginLeft"
+                [bc-margin-right]="marginRight"></ngx-barcode>
+            </div>
+            <span class="text-center">
+              Solicitó
+              <br>
+              <span class="display-4 font-weight-bold">{{p.cantsol}}</span>
+            </span>
+            <input type="number" id="newcant" name="newcant" class="form-control text-center font-weight-bold mb-2" [value]="p.cantsol">
+            <span class="text-center">
+                Existencias
+              <br>
+              <span class="display-4 font-weight-bold">{{p.existencia}}</span>
+            </span>
+            <input type="number" id="newexist" name="newexist" class="form-control text-center font-weight-bold" [value]="p.existencia">
+            <hr class="mt-2">
+            <button class="btn btn-primary" [useExistingCss]="useExistingCss" [printSectionId]="'print-section'+p.codigo" ngxPrint>Imprimir</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

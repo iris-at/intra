@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 // Import ngx-barcode module
 import { NgxBarcodeModule } from 'ngx-barcode';
 
+// Imprimir
+import {NgxPrintModule} from 'ngx-print';
+
 // Graficas ng2-charts
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
@@ -36,6 +39,7 @@ import { GraficaComponent } from '../components/grafica/grafica.component';
         PAGES_ROUTES,
         ChartsModule,
         NgxBarcodeModule,
+        NgxPrintModule
     ]
 })
 

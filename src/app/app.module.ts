@@ -5,10 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 // Formularios
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-//Rutas
+// Rutas
 import { APP_ROUTES } from './app.routes';
 
-//Componentes
+// Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PagesComponent } from './pages/pages.component';
