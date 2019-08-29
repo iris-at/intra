@@ -42,6 +42,7 @@ const pageRoutes: Routes = [
         redirectTo: '/dashboardAlmacen',
         pathMatch: 'full'
     }
+   
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild(pageRoutes);
