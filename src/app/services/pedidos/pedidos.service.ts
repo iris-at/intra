@@ -71,7 +71,6 @@ export class PedidosService {
     this.url = URL_EXTERNO + ':' + PUERTO_SERVER + '/api/almacen.php?opcion=14&id=' + id;
     return this.http.get(this.url);
   }
-
   imprimirBarCode(value: any) {
     this.url = URL_EXTERNO + ':' + PUERTO_SERVER + '/api/almacen.php?opcion=15&value=' + value;
     return this.http.get(this.url);

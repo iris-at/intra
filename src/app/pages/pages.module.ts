@@ -21,6 +21,7 @@ import { TicketComponent } from './ticket/ticket.component';
 // Componentes
 import { PedidosComponent } from '../components/pedidos/pedidos.component';
 import { GraficaComponent } from '../components/grafica/grafica.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,7 @@ import { GraficaComponent } from '../components/grafica/grafica.component';
         TicketComponent,
         // Components
         PedidosComponent,
-        GraficaComponent
+        GraficaComponent,
     ],
     exports: [
     ],
@@ -38,6 +39,7 @@ import { GraficaComponent } from '../components/grafica/grafica.component';
         CommonModule,
         PAGES_ROUTES,
         ChartsModule,
+        FormsModule,
         NgxBarcodeModule,
         NgxPrintModule
     ]
