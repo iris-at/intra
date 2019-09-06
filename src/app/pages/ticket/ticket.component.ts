@@ -16,9 +16,9 @@ export class TicketComponent implements OnInit {
   folio: string;
   useExistingCss = true;
   elementType = 'svg';
-  format = 'CODE39';
+  format = 'CODE128';
   lineColor = '#000000';
-  width = 2;
+  width = 3;
   height = 100;
   displayValue = true;
   fontOptions = '';
