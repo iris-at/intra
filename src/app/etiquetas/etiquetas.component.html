@@ -18,7 +18,7 @@
         <div class="card">
           <div class="card-body">
             <div [id]="'print-section'+codigo">
-              <h2>{{code}} - <span>{{cantNum}}<span *ngIf="cantNum <= 1">pz</span><span *ngIf="cantNum > 1">pzs</span></span></h2>
+              <h2>{{code}} - <span style="font-weight: bold; font-size: 25px;">{{cantNum}}<span *ngIf="cantNum <= 1">pz</span><span *ngIf="cantNum > 1">pzs</span></span></h2>
               <h6 class="text-break" style="width: 250px!important; word-break: break-word!important; overflow-wrap: break-word!important;">{{articulo.ARTICULO}}</h6>
               <ngx-barcode
                 [bc-value]="textCodBar(articulo)"
