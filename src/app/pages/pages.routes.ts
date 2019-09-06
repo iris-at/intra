@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
-//Guardia
+// Guardia
 import { VerificatokenGuard } from '../guards/verificatoken/verificatoken.guard';
 
-//Componentes
+// Componentes
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ConsultasComponent } from './consultas/consultas.component';
 import { TicketComponent } from './ticket/ticket.component';
@@ -29,7 +29,7 @@ const pageRoutes: Routes = [
     },
     {
         path: 'ticket',
-        canActivate: [ VerificatokenGuard ],
+        canActivate: [  ],
         component: TicketComponent,
         data:   {
                     titulo: 'Tickets',
@@ -42,7 +42,7 @@ const pageRoutes: Routes = [
         redirectTo: '/dashboardAlmacen',
         pathMatch: 'full'
     }
-   
+
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild(pageRoutes);

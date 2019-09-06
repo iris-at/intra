@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 // Servicios
-import { ArticuloService } from 'src/app/services/articulo/articulo.service';
+import { ArticuloService } from '../services/articulo/articulo.service';
 
 @Component({
-  selector: 'app-ticket',
-  templateUrl: './ticket.component.html',
-  styles: []
+  selector: 'app-etiquetas',
+  templateUrl: './etiquetas.component.html',
+  styleUrls: ['./etiquetas.component.css']
 })
-export class TicketComponent implements OnInit {
+export class EtiquetasComponent implements OnInit {
 
   @ViewChild('codigo') codigo: ElementRef;
   code = '';
