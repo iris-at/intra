@@ -55,7 +55,7 @@
             </span>
             <input type="number" id="newexist" name="newexist" class="form-control text-center font-weight-bold" [value]="p.existencia"> -->
             <hr class="mt-2">
-            <button class="btn btn-primary" [useExistingCss]="useExistingCss" [printSectionId]="'print-section'+codigo" ngxPrint>Imprimir</button>
+            <button class="btn btn-primary" [useExistingCss]="useExistingCss" [printSectionId]="'print-section'+codigo" ngxPrint id="botonImp" style="display: none;">Imprimir</button>
             <!-- <button class="btn btn-primary" [id]="'print-section'+p.codigo" (click)="imprimiCode(p)">Imprimir</button> -->
           </div>
         </div>
