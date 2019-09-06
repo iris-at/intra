@@ -43,27 +43,35 @@ export class TicketComponent implements OnInit {
   }
 
   obtenerPartidas() {
-    // if (this.input.nativeElement.value === '') {
-    //   return;
-    // }
+    if (this.input.nativeElement.value === '') {
+      return;
+    }
 
-    // const buscar = this.input.nativeElement.value.split('-');
-    // if (buscar.length > 1) {
-      // this.pedidosService.obtenerPartidasPedido(buscar[1], buscar[0]).subscribe((resp: any) => {
-      this.pedidosService.obtenerPartidasPedido('1400', 'Q').subscribe((resp: any) => {
+    const buscar = this.input.nativeElement.value.split('-');
+    if (buscar.length > 1) {
+      this.pedidosService.obtenerPartidasPedido(buscar[1], buscar[0]).subscribe((resp: any) => {
+      // this.pedidosService.obtenerPartidasPedido('10478', 'G').subscribe((resp: any) => {
         if (resp.length > 0) {
           this.folio = this.input.nativeElement.value;
           this.partidas = resp;
         }
         this.input.nativeElement.value = '';
       });
-    // }
+    }
   }
 
   textCodBar(partida: any) {
     const dividir = partida.cantbar.split('#');
     const codbar = `01${partida.codigo}${dividir[1]}`;
     return codbar;
+  }
+
+  imprimiCode(producto: any) {
+    const dividir = producto.cantbar.split('#');
+    const codbar = `01${producto.codigo}${dividir[1]}`;
+    this.pedidosService.imprimirBarCode(codbar).subscribe((resp: any) => {
+      console.log(resp);
+    });
   }
 
 }
