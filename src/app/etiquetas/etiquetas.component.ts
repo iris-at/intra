@@ -89,6 +89,8 @@ export class EtiquetasComponent implements OnInit {
 
     this.cant = this.zfill(this.cantidad.nativeElement.value, 5);
     this.cantNum = this.cantidad.nativeElement.value;
+    const boton = (document.getElementById('botonImp')) as HTMLButtonElement;
+    boton.click();
   }
 
   textCodBar(art: any) {
