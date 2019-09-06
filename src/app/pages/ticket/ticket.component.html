@@ -15,7 +15,7 @@
         <div class="card">
           <div class="card-body">
             <div [id]="'print-section'+p.codigo">
-              <h2>{{p.serie}}-{{p.folio}}</h2>
+              <h2>{{p.serie}}-{{p.folio}} < <span style="font-size: 40px;">{{p.cantsol}}<span *ngIf="p.cantsol === 1">pz</span><span *ngIf="p.cantsol > 1">pzs</span></span> ></h2>
               <h6>{{p.articulo}}</h6>
               <ngx-barcode
                 [bc-value]="textCodBar(p)"
